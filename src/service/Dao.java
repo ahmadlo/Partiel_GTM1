@@ -8,17 +8,19 @@ import java.sql.Statement;
 
 import metier.Ecole;
 import metier.Etudiant;
+import metier.Personnel;
 
 public  class Dao {
 
 	public static String password = "";
 	static Connection cn = null;
 	static Statement st = null;
+	private static ResultSet rs;
 
-	public static void  connexion() {
+	public static void  connexion() throws SQLException {
 		// information de la base de donnee
 
-				String url = "jdbc:mysql://localhost/etudiantecole";
+				String url = "jdbc:mysql://localhost/partiel_gtm";
 				String login = "root";
 
 				
@@ -44,14 +46,9 @@ public  class Dao {
 					e.printStackTrace();
 				} finally {
 
-					// etape 5 liberer les ressources
-					try {
-						cn.close();
-						st.close();
-					} catch (SQLException e) {
-
-						e.printStackTrace();
-					}
+					System.out.println("fsd");
+					//cn.close();
+					//st.close();
 				}
 	}
 	public static void creerEcole(Ecole ecole) {
@@ -463,5 +460,51 @@ public  class Dao {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	//methode de conenxion du personnel 
+	public static Personnel connexionAppli(String login,String password) {
+		
+		Personnel user = null;
+		// connexion  à la base de données 
+		try {
+			connexion();
+			if(cn!=null) {
+				
+				// etape 3 creation du statement
+				st = cn.createStatement();
+				String sql = "select * from personnel where  login = '" + login + "' and password = '" + password + "'";
+				
+				// etape 4 executer la requette
+				
+				rs = st.executeQuery(sql);
+
+				// etape5 parcours du resultSet
+				
+				while (rs.next()) {
+					user = new Personnel();
+					
+					user.setIdentifiant(rs.getString("identifiant"));
+					user.setNom(rs.getString("nom"));
+					user.setPrenom(rs.getString("prenom"));
+					user.setEmail(rs.getString("email"));
+					user.setAdresse(rs.getString("adresse"));
+					user.setTelephone(rs.getString("telephone"));
+					user.setFonction(rs.getString("fonciton"));
+					
+					
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		// retourner le personnel connecté 
+		return user;
+
+		
+		
 	}
 }

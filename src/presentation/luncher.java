@@ -6,10 +6,11 @@ import javax.management.openmbean.OpenMBeanOperationInfo;
 
 import metier.Ecole;
 import metier.Etudiant;
+import metier.Personnel;
 import service.Dao;
 
 public class luncher {
-
+static Personnel userConnect = null;
 	private static void afficher() {
 		Scanner scan = new Scanner(System.in);
 
@@ -66,7 +67,7 @@ public class luncher {
 	public static void main(String[] args) {
 		// mot de passe mysql
 		saisirMotDePasse();
-		// tester connexion 
+		// connexion à l'application  
 		testerConnexion();
 		// op�ration � faire
 		methodeARepetition();
@@ -74,7 +75,21 @@ public class luncher {
 	}
 
 	private static void testerConnexion() {
-		Dao.connexion();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("--------------------------------------------------------------");
+		System.out.print("Vous devez vous connectez avant d'accéder à l'application : ");
+		System.out.println();
+		System.out.print("Veuillez saisir votre login : ");
+		System.out.println();
+		String login  = sc.next();
+		System.out.println();
+		System.out.print("Veuillez saisir votre password : ");
+		System.out.println();
+		String password   = sc.next();
+		
+		
+		userConnect= Dao.connexionAppli(login,password );
+		System.out.println("bienvenue  : " + userConnect.getNom());
 		
 	}
 
