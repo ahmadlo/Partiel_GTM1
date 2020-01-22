@@ -135,6 +135,31 @@ public  class Dao {
 		
 	}
 
+	
+	//update de �tudiant
+		public static void updateEtudiant(String ancienNom, String nouveauNom) {
+			
+			// connexion  à la base de données 
+			try {
+				connexion();
+				if(cn!=null) {
+					// etape 3 creation du statement
+					st = cn.createStatement();
+					String sql = "update etudiant set nom = '" + nouveauNom + "' where nom = '" + ancienNom + "'";
+
+					// etape 4 executer la requette
+
+					int rs = st.executeUpdate(sql);
+					System.out.println("modification du nom de l'�tudiant �ffectu�e avec succ�s");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+
+			
+		}
+
 	public static void creerEcole(Ecole ecole) {
 
 		// information de la base de donnee
@@ -342,53 +367,6 @@ public  class Dao {
 		}
 	}
 
-//update de �tudiant
-	public static void updateEtudiant(String ancienNom, String nouveauNom) {
-		// information de la base de donnee
-
-		String url = "jdbc:mysql://localhost/etudiantecole";
-		String login = "root";
-
-		Connection cn = null;
-		Statement st = null;
-
-		try {
-			// etape1 chargement du driver
-
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// etape2 recupertion de la connnexion
-
-			cn = DriverManager.getConnection(url, login, password);
-
-			// etape 3 creation du statement
-			st = cn.createStatement();
-			String sql = "update etudiant set nom = '" + nouveauNom + "' where nom = '" + ancienNom + "'";
-
-			// etape 4 executer la requette
-
-			int rs = st.executeUpdate(sql);
-			System.out.println("modification du nom de l'�tudiant �ffectu�e avec succ�s");
-
-		} catch (SQLException e) {
-			System.out.println("Le nom n'existe pas");
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			// etape 5 liberer les ressources
-			try {
-				cn.close();
-				st.close();
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-		}
-
-	}
 
 //update �cole
 	public static void updateEcole(String ancienNom, String nouveauNom) {

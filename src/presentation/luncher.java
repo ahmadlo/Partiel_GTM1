@@ -145,10 +145,14 @@ static Personnel userConnect = null;
 			break;
 
 		case 2:
+			// modifier un �tudiant
 			System.out.println();
-			// enr�gistrer un �tudiant
-			CreerEtudiant();
-			
+			System.out.print("entrer le nom de l'etudiant � modifier: ");
+			String ancienNom = scan.next();
+			System.out.println();
+			System.out.print("entrer le nouveau nom de l'etudiant : ");
+			String nouveauNom = scan.next();
+			Dao.updateEtudiant(ancienNom, nouveauNom);
 			continuerOperation();
 			break;
 
@@ -199,11 +203,11 @@ static Personnel userConnect = null;
 			// modifier un �tudiant
 			System.out.println();
 			System.out.print("entrer le nom de l'etudiant � modifier: ");
-			String ancienNom = scan.next();
+			String ancienNom1 = scan.next();
 			System.out.println();
 			System.out.print("entrer le nouveau nom de l'etudiant : ");
-			String nouveauNom = scan.next();
-			Dao.updateEtudiant(ancienNom, nouveauNom);
+			String nouveauNom1 = scan.next();
+			Dao.updateEtudiant(ancienNom1, nouveauNom1);
 			continuerOperation();
 			break;
 
