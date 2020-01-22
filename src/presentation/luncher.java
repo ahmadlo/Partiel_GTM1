@@ -157,10 +157,13 @@ static Personnel userConnect = null;
 			break;
 
 		case 3:
-			// lister les �coles
+			// lister infos etudiants 
 			System.out.println();
-			System.out.println("La liste des �coles");
-			Dao.lireEcole();
+			System.out.print("entrer le nom de l'etudiant � modifier: ");
+			String nom = scan.next();
+			System.out.println();
+			Etudiant etu = Dao.lireEtudiant(nom);
+			System.out.println(etu.toString());
 			continuerOperation();
 			break;
 		case 4:

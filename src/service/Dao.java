@@ -82,7 +82,7 @@ public  class Dao {
 						user.setEmail(rs.getString("email"));
 						user.setAdresse(rs.getString("adresse"));
 						user.setTelephone(rs.getString("telephone"));
-						user.setFonction(rs.getString("fonciton"));
+						user.setFonction(rs.getString("fonction"));
 						
 						
 					}
@@ -158,6 +158,107 @@ public  class Dao {
 			
 
 			
+		}
+
+		//lire les infos d'un étudiant 
+		public static Etudiant  lireEtudiant(String nom) {
+			
+			Etudiant user = null;
+			// connexion  à la base de données 
+			try {
+				connexion();
+				if(cn!=null) {
+					
+					// etape 3 creation du statement
+					st = cn.createStatement();
+					String sql = "select * from etudiant where  nom = '" + nom + "'";
+					
+					// etape 4 executer la requette
+					
+					rs = st.executeQuery(sql);
+
+					// etape5 parcours du resultSet
+					
+					while (rs.next()) {
+						user = new Etudiant();
+						
+						user.setIdentifiant(rs.getString("identifiant"));
+						user.setNom(rs.getString("nom"));
+						user.setPrenom(rs.getString("prenom"));
+						user.setEmail(rs.getString("email"));
+						user.setAdresse(rs.getString("adresse"));
+						user.setTelephone(rs.getString("telephone"));
+						user.setDate_naiss(rs.getDate("date_naiss"));
+						
+						
+					}
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			// retourner le personnel connecté 
+			return user;
+
+		}
+
+		public static void lireEtudiant() {
+
+			// information de la base de donnee
+
+			String url = "jdbc:mysql://localhost/etudiantecole";
+			String login = "root";
+
+			Connection cn = null;
+			Statement st = null;
+			ResultSet rs = null;
+
+			try {
+				// etape1 chargement du driver
+
+				Class.forName("com.mysql.jdbc.Driver");
+
+				// etape2 recupertion de la connnexion
+
+				cn = DriverManager.getConnection(url, login, password);
+
+				// etape 3 creation du statement
+				st = cn.createStatement();
+				String sql = "select * from etudiant";
+
+				// etape 4 executer la requette
+				System.out.println("Liste des etudiants ");
+				rs = st.executeQuery(sql);
+
+				// etape5 parcours du resultSet
+				while (rs.next()) {
+					System.out.println(rs.getInt("idEcole"));
+					System.out.println(" ");
+					System.out.print(rs.getString("nom"));
+					System.out.print(" ");
+					System.out.println(rs.getString("prenom"));
+
+				}
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+
+				e.printStackTrace();
+			} finally {
+
+				// etape 5 liberer les ressources
+				try {
+					cn.close();
+					st.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
 		}
 
 	public static void creerEcole(Ecole ecole) {
@@ -262,63 +363,6 @@ public  class Dao {
 	}
 
 	
-	public static void lireEtudiant() {
-
-		// information de la base de donnee
-
-		String url = "jdbc:mysql://localhost/etudiantecole";
-		String login = "root";
-
-		Connection cn = null;
-		Statement st = null;
-		ResultSet rs = null;
-
-		try {
-			// etape1 chargement du driver
-
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// etape2 recupertion de la connnexion
-
-			cn = DriverManager.getConnection(url, login, password);
-
-			// etape 3 creation du statement
-			st = cn.createStatement();
-			String sql = "select * from etudiant";
-
-			// etape 4 executer la requette
-			System.out.println("Liste des etudiants ");
-			rs = st.executeQuery(sql);
-
-			// etape5 parcours du resultSet
-			while (rs.next()) {
-				System.out.println(rs.getInt("idEcole"));
-				System.out.println(" ");
-				System.out.print(rs.getString("nom"));
-				System.out.print(" ");
-				System.out.println(rs.getString("prenom"));
-
-			}
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} finally {
-
-			// etape 5 liberer les ressources
-			try {
-				cn.close();
-				st.close();
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-		}
-	}
-
 	public static void deleteEtudiant(String nom) {
 
 		// information de la base de donnee
