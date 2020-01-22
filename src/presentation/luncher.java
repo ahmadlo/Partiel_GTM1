@@ -1,6 +1,7 @@
 package presentation;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.management.openmbean.OpenMBeanOperationInfo;
@@ -159,7 +160,7 @@ static Personnel userConnect = null;
 		case 3:
 			// lister infos etudiants 
 			System.out.println();
-			System.out.print("entrer le nom de l'etudiant � modifier: ");
+			System.out.print("entrer le nom de l'etudiant � afficher: ");
 			String nom = scan.next();
 			System.out.println();
 			Etudiant etu = Dao.lireEtudiant(nom);
@@ -168,9 +169,20 @@ static Personnel userConnect = null;
 			break;
 		case 4:
 			// lister les �tudiants
-			System.out.println();
-			System.out.println("La liste des �tudiants");
-			Dao.lireEtudiant();
+			if(userConnect.getFonction().matches("directeur")) {
+				System.out.println();
+				System.out.println("La liste des �tudiants");
+				ArrayList<Etudiant> list = Dao.lireEtudiants();
+				for (Etudiant etudiant : list) {
+					System.out.println("infos Etudiant : " + etudiant.getNom());
+					System.out.println();
+					System.out.println(etudiant.toString());
+				}
+			}
+			else {
+				System.out.println("vous n'etes pas autorisé à accéder à cette fonctionnalité ");
+			}
+		
 			continuerOperation();
 			break;
 		case 5:

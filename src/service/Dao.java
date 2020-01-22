@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import metier.Ecole;
@@ -203,6 +204,52 @@ public  class Dao {
 			return user;
 
 		}
+
+		
+		//liste des étudiants 
+				public static ArrayList<Etudiant>  lireEtudiants() {
+					ArrayList<Etudiant> list = null;
+					Etudiant user = null;
+					// connexion  à la base de données 
+					try {
+						connexion();
+						if(cn!=null) {
+							
+							// etape 3 creation du statement
+							st = cn.createStatement();
+							String sql = "select * from etudiant ";
+							
+							// etape 4 executer la requette
+							
+							rs = st.executeQuery(sql);
+
+							// etape5 parcours du resultSet
+							list = new ArrayList<Etudiant>();
+							while (rs.next()) {
+								user = new Etudiant();
+								
+								user.setIdentifiant(rs.getString("identifiant"));
+								user.setNom(rs.getString("nom"));
+								user.setPrenom(rs.getString("prenom"));
+								user.setEmail(rs.getString("email"));
+								user.setAdresse(rs.getString("adresse"));
+								user.setTelephone(rs.getString("telephone"));
+								user.setDate_naiss(rs.getDate("date_naiss"));
+								list.add(user);
+								
+								
+							}
+						}
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					
+					// retourner le personnel connecté 
+					return list;
+
+				}
 
 		public static void lireEtudiant() {
 
