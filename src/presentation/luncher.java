@@ -185,14 +185,7 @@ static Personnel userConnect = null;
 		
 			continuerOperation();
 			break;
-		case 5:
-			// supprimer une �cole
-			System.out.println();
-			System.out.print("entrer le nom de l'�cole � supprimer: ");
-			String nomEcoleSupprimer = scan.next();
-			Dao.deleteEcole(nomEcoleSupprimer);
-			continuerOperation();
-			break;
+		
 
 		case 6:
 			// supprimer un �tudiant
