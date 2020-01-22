@@ -1,7 +1,7 @@
 # Partiel_GTM1
 Etape d'instalaltion du projet 
 
-1) Importer le fichier  Partiel1.sql dans votre base de donnée
+1) Importer le fichier  partiel.sql dans votre base de donnée
 2) Télécharnger le  fichier jar partiel.jar
 3) Lancer le depuis une fenetre du terminal 
 
