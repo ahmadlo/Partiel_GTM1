@@ -196,28 +196,7 @@ static Personnel userConnect = null;
 			continuerOperation();
 			break;
 
-		case 7:
-			// modifer une �cole
-			System.out.println();
-			System.out.print("entrer le nom de l'�cole � modifier: ");
-			String ancienNomEcole = scan.next();
-			System.out.println();
-			System.out.print("entrer le nouveau nom de l'�cole : ");
-			String nouveauNomEcole = scan.next();
-			Dao.updateEcole(ancienNomEcole, nouveauNomEcole);
-			continuerOperation();
-			break;
-		case 8:
-			// modifier un �tudiant
-			System.out.println();
-			System.out.print("entrer le nom de l'etudiant � modifier: ");
-			String ancienNom1 = scan.next();
-			System.out.println();
-			System.out.print("entrer le nouveau nom de l'etudiant : ");
-			String nouveauNom1 = scan.next();
-			Dao.updateEtudiant(ancienNom1, nouveauNom1);
-			continuerOperation();
-			break;
+		
 
 		default:
 			// si aucune op�ration ne correspond
