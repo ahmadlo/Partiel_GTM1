@@ -1,5 +1,6 @@
 package presentation;
 
+import java.sql.Date;
 import java.util.Scanner;
 
 import javax.management.openmbean.OpenMBeanOperationInfo;
@@ -11,19 +12,22 @@ import service.Dao;
 
 public class luncher {
 static Personnel userConnect = null;
+
+// fonction qui affiche le menu 
 	private static void afficher() {
 		Scanner scan = new Scanner(System.in);
 
 		// affichage basique
 		System.out.println("--------------------------------------------------------------");
-		System.out.println("Pour ins�rer une �cole tapez 1");
-		System.out.println("Pour ins�rer un �tudiant tapez 2");
-		System.out.println("Pour lister les �coles tapez 3");
+		System.out.println("Pour ins�rer un �tudiant tapez 1");
+		System.out.println("Pour modifier le nom d'un �tudiant tapez 2");
+		System.out.println("Pour lister les �infos d'un étudaint  tapez 3");
 		System.out.println("Pour lister les �tudiants tapez 4");
-		System.out.println("Pour supprimer une �cole tapez 5");
-		System.out.println("Pour supprimer un �tudiant tapez 6");
-		System.out.println("Pour modifier le nom d'une �cole tapez 7");
-		System.out.println("Pour modifier le nom d'un �tudiant tapez 8");
+		System.out.println("Pour supprimer un �tudiant tapez 5");
+		System.out.println("Pour Associer un cours à un étudiant tapez 6");
+		
+		
+		
 		System.out.println("--------------------------------------------------------------");
 		//
 		System.out.print("Saisir un chiffre : ");
@@ -69,8 +73,13 @@ static Personnel userConnect = null;
 		saisirMotDePasse();
 		// connexion à l'application  
 		testerConnexion();
-		// op�ration � faire
-		methodeARepetition();
+		if(userConnect != null) {
+			// op�ration � faire
+			methodeARepetition();
+		}
+		
+		
+		
 
 	}
 
@@ -128,31 +137,18 @@ static Personnel userConnect = null;
 		Scanner scan = new Scanner(System.in);
 		switch (chiffre) {
 		case 1:
-			// enr�gistrer une �cole
 			System.out.println();
-			System.out.print("entrer le nom de l'�cole : ");
-			String nomEcol = scan.next();
-			System.out.println();
-			System.out.print("entrer l'adresse de l'�cole : ");
-			String adresse = scan.next();
-			Ecole ecole = new Ecole();
-			Dao.creerEcole(ecole);
+			// enr�gistrer un �tudiant
+			CreerEtudiant();
+			
 			continuerOperation();
 			break;
 
 		case 2:
 			System.out.println();
 			// enr�gistrer un �tudiant
-			System.out.print("entrer le nom de l'etudiant : ");
-			String nom = scan.next();
-			System.out.println();
-			System.out.print("entrer le prenom de l'etudiant : ");
-			String prenom = scan.next();
-			System.out.println();
-			System.out.print("entrer le nom de l'�cole : ");
-			String nomEcole = scan.next();
-			Etudiant etudiant = new Etudiant();
-			Dao.creerEtudiant(etudiant, nomEcole);
+			CreerEtudiant();
+			
 			continuerOperation();
 			break;
 
@@ -219,6 +215,39 @@ static Personnel userConnect = null;
 			break;
 		}
 
+	}
+//focntion de saisie des infos de l'etudaint 
+	private static void CreerEtudiant() {
+		Etudiant etudiant = new Etudiant();
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("entrer le nom de l'etudiant : ");
+		etudiant.setNom(scan.next());
+		System.out.println();
+		
+		System.out.print("entrer le prenom de l'etudiant : ");
+		etudiant.setPrenom(scan.next());
+		System.out.println();
+		
+		System.out.print("entrer l'email de l'etudiant : ");
+		etudiant.setEmail(scan.next());
+		System.out.println();
+		
+		System.out.print("entrer l'adresse de l'etudiant : ");
+		etudiant.setAdresse(scan.next());
+		System.out.println();
+		
+		System.out.print("entrer le telephone de l'etudiant : ");
+		etudiant.setTelephone(scan.next());
+		System.out.println();
+		
+		System.out.print("entrer la date de naissance  de l'etudiant : ");
+		etudiant.setDate_naiss( Date.valueOf(scan.next()));
+		System.out.println();
+		Dao.creerEtudiant(etudiant);
+		
+		
 	}
 
 }
