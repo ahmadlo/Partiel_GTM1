@@ -7,35 +7,79 @@ public class Ecole {
 
 	
 	private String nom;
-	private String email;
 	private String adresse;
+	private String email;
 	private String telephone;
 	private String directeur;
 	
 	
 	
-	public Ecole(String nomEcole, String adresseEcole) {
-		super();
-		this.nom = nomEcole;
-		this.adresse = adresseEcole;
+	/**
+	 * 
+	 */
+	public Ecole() {
 	}
-
+	/**
+	 * @return the nom
+	 */
 	public String getNom() {
 		return nom;
 	}
-
-	public void setNom(String nomEcole) {
-		this.nom = nomEcole;
-	}
-
+	/**
+	 * @return the adresse
+	 */
 	public String getAdresse() {
 		return adresse;
 	}
-
-	public void setAdresse(String adresseEcole) {
-		this.adresse = adresseEcole;
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
 	}
-
+	/**
+	 * @return the telephone
+	 */
+	public String getTelephone() {
+		return telephone;
+	}
+	/**
+	 * @return the directeur
+	 */
+	public String getDirecteur() {
+		return directeur;
+	}
+	/**
+	 * @param nom the nom to set
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	/**
+	 * @param adresse the adresse to set
+	 */
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	/**
+	 * @param telephone the telephone to set
+	 */
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	/**
+	 * @param directeur the directeur to set
+	 */
+	public void setDirecteur(String directeur) {
+		this.directeur = directeur;
+	}
+	
 	
 		
 }

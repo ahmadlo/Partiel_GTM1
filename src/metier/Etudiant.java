@@ -1,59 +1,38 @@
 package metier;
+/*
+ * classe de base des etudiants qui hérite de PErsonne 
+ */
+public class Etudiant extends Personne  {
 
-public class Etudiant {
 
-	
-	private int numEtudiant;
-	private String nomEtudiant;
-	private String prenomEtudiant;
-	private Ecole ecole;
-		
-	public Etudiant(String nomE, String prenomE) {
-		this.nomEtudiant = nomE;
-		this.prenomEtudiant = prenomE;
+	// propriétés spécifiques 
+	private String date_naiss;
+
+
+
+	/**
+	 * 
+	 */
+	public Etudiant() {
 	}
 	
-	public int getNumEtudiant() {
-		return numEtudiant;
-	}
-	public void setNumEtudiant(int numE) {
-		this.numEtudiant = numE;
-	}
-	public String getNomEtudiant() {
-		return nomEtudiant;
-	}
-	public void setNomEtudiant(String nomE) {
-		this.nomEtudiant = nomE;
-	}
-	public String getPrenomEtudiant() {
-		return prenomEtudiant;
-	}
-	public void setPrenomEtudiant(String prenomE) {
-		this.prenomEtudiant = prenomE;
-	}
-	
-	public Ecole getEcole() {
-		return ecole;
+	/**
+	 * @return the date_naiss
+	 */
+	public String getDate_naiss() {
+		return date_naiss;
 	}
 
-	public void setEcole(Ecole ecole) {
-		this.ecole = ecole;
+	/**
+	 * @param date_naiss the date_naiss to set
+	 */
+	public void setDate_naiss(String date_naiss) {
+		this.date_naiss = date_naiss;
 	}
 	
-	public String faireExamen() {
-		return nomEtudiant + " a fait un examen" ;
-	}
 	
-	public boolean inscrire() {
-		if (this.getEcole() == null) {
-			return false;
-		}
-		return true;
-	}
 	
-
-	@Override
-	public String toString() {
-		return "Etudiant [numEtudiant=" + numEtudiant + ", nomEtudiant=" + nomEtudiant + ", prenomEtudiant=" + prenomEtudiant + "]";
-	}	
+	
+	
+	
 }
