@@ -1,5 +1,5 @@
 package interface_graphique;
-
+import service.* ;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.TextField;
@@ -30,17 +30,12 @@ public class Fenetre2 extends JFrame implements ActionListener  {
             setSize(300, 300);
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             setLocationRelativeTo(null);
-            setVisible(true);
-                         
-        
-            
-        this.setVisible(true);                             
+            setVisible(true);                      
      }
         
         
         @Override
         public void actionPerformed(ActionEvent e) { 
-        
-            
+        	fieldAff.setText("La liste des étudiants : \n"+ new EtudiantService().lireEtudiants().toString());
         }
 }

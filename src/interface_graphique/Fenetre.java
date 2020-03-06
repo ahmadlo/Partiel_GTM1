@@ -6,35 +6,36 @@ import java.awt.event.*;
 
 import javax.swing.JFrame;  
  
-// An AWT program inherits from the top-level container java.awt.Frame
+
 public class Fenetre extends JFrame implements ActionListener {
-   private TextField user,pssw; // Declare a TextField component 
-   private Button btnCnx;   // Declare a Button component
+   private TextField user,pssw; 
+   private Button btnCnx;  
    private Fenetre2 fen;
-   // Constructor to setup GUI components and event handlers
+   
    public Fenetre () {
       setLayout(new FlowLayout());
       
-      user = new TextField("Entrez votre Username", 20); // construct the TextField component with initial text
+      user = new TextField("Entrez votre Username", 20); 
       user.setBackground(Color.WHITE);
-      user.setEditable(true);      	 // set to read-only
-      add(user);                     // "super" Frame container adds TextField component
+      user.setEditable(true);      	
+      add(user);                     
       
-      pssw = new TextField("Entrez votre Mdp", 20); // construct the TextField component with initial text
+      pssw = new TextField("Entrez votre Mdp", 20); 
       pssw.setBackground(Color.WHITE);
-      pssw.setEditable(true);      	 // set to read-only
-      add(pssw);                     // "super" Frame container adds TextField component
+      pssw.setEditable(true);     
+      add(pssw);                    
  
-      btnCnx = new Button("Connexion");   // construct the Button component
+      btnCnx = new Button("Connexion");   
       btnCnx.setForeground(Color.BLACK);
-      add(btnCnx);                    // "super" Frame container adds Button component
+      add(btnCnx);                   
  
       btnCnx.addActionListener(this);
  
-      setTitle("ENSUP Identification");  		// "super" Frame sets its title
+      setTitle("ENSUP Identification");  	
+      
       this.setSize(600,100);
       this.setLocationRelativeTo(null);
-      setVisible(true);         // "super" Frame shows
+      setVisible(true);        
  
    }
 
