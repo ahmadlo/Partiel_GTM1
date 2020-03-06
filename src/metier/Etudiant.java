@@ -35,10 +35,7 @@ public class Etudiant extends Personne  {
 
 	@Override
 	public String toString() {
-		return "Etudiant [getDate_naiss()=" + getDate_naiss() + ", getIdentifiant()=" + getIdentifiant() + ", getNom()="
-				+ getNom() + ", getPrenom()=" + getPrenom() + ", getAdresse()=" + getAdresse() + ", getEmail()="
-				+ getEmail() + ", getTelephone()=" + getTelephone() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+		return getNom() + " - " + getPrenom() + " - "   + getAdresse() + " - "  + getDate_naiss()  ;
 	}
 	
 	

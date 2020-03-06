@@ -29,12 +29,12 @@ static PersonnelService personnelService;
 
 		// affichage basique
 		System.out.println("--------------------------------------------------------------");
-		System.out.println("Pour ins�rer un �tudiant tapez 1");
-		System.out.println("Pour modifier le nom d'un �tudiant tapez 2");
-		System.out.println("Pour lister les �infos d'un étudaint  tapez 3");
-		System.out.println("Pour lister les �tudiants tapez 4");
-		System.out.println("Pour supprimer un �tudiant tapez 5");
-		System.out.println("Pour Associer un cours à un étudiant tapez 6");
+		System.out.println("Pour insérer un étudiant tapez 1");
+		System.out.println("Pour modifier le nom d'un etudiant tapez 2");
+		System.out.println("Pour lister les infos d'un etudaint  tapez 3");
+		System.out.println("Pour lister les etudiants tapez 4");
+		System.out.println("Pour supprimer un etudiant tapez 5");
+		System.out.println("Pour Associer un cours à un etudiant tapez 6");
 		System.out.println("Pour une affichage graphique  tapez 7");
 		
 		
@@ -47,24 +47,24 @@ static PersonnelService personnelService;
 	}
 
 	private static Integer saisieOperation() {
-		// saisir une num�ro qui correspond � une op�ration
+		// saisir une numero qui correspond e une operation
 		Scanner scan = new Scanner(System.in);
 		int saisie = scan.nextInt();
 		return saisie;
 	}
 
-	// regroupement des m�thodes qui se r�p�tent
+	// regroupement des methodes qui se repetent
 	private static void methodeARepetition() {
-		// appel de la m�thode afficher
+		// appel de la methode afficher
 		afficher();
-		// r�cup�ration du chiffre saisie
+		// recuperation du chiffre saisie
 		int saisie = saisieOperation();
-		// op�ration � ex�cuter
+		// operation e executer
 		operation(saisie);
 	}
 
 	/*
-	 * mot de passe base de donn�e
+	 * mot de passe base de donnee
 	 */
 	private static void saisirMotDePasse() {
 		Scanner sc = new Scanner(System.in);
@@ -79,7 +79,7 @@ static PersonnelService personnelService;
 		}
 	}
 
-	// m�thode main
+	// methode main
 	public static void main(String[] args) {
 		etudiantService = new EtudiantService();
 		personnelService=new PersonnelService();
@@ -88,7 +88,7 @@ static PersonnelService personnelService;
 		// connexion à l'application  
 		testerConnexion();
 		if(userConnect != null) {
-			// op�ration � faire
+			// operation e faire
 			methodeARepetition();
 		}
 		
@@ -100,7 +100,7 @@ static PersonnelService personnelService;
 	private static void testerConnexion() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("--------------------------------------------------------------");
-		System.out.print("Vous devez vous connectez avant d'accéder à l'application : ");
+		System.out.print("Vous devez vous connectez avant d'acceder à l'application : ");
 		System.out.println();
 		System.out.print("Veuillez saisir votre login : ");
 		System.out.println();
@@ -117,7 +117,7 @@ static PersonnelService personnelService;
 	}
 
 	/*
-	 * demander si l'utilisateur veut poursuivre les op�rations
+	 * demander si l'utilisateur veut poursuivre les operations
 	 */
 	private static void continuerOperation() {
 
@@ -145,23 +145,23 @@ static PersonnelService personnelService;
 	}
 
 	/*
-	 * op�ration � ex�cuter
+	 * operation e executer
 	 */
 	private static void operation(int chiffre) {
 		Scanner scan = new Scanner(System.in);
 		switch (chiffre) {
 		case 1:
 			System.out.println();
-			// enr�gistrer un �tudiant
+			// enregistrer un etudiant
 			CreerEtudiant();
 			
 			continuerOperation();
 			break;
 
 		case 2:
-			// modifier un �tudiant
+			// modifier un etudiant
 			System.out.println();
-			System.out.print("entrer le nom de l'etudiant � modifier: ");
+			System.out.print("entrer le nom de l'etudiant e modifier: ");
 			String ancienNom = scan.next();
 			System.out.println();
 			System.out.print("entrer le nouveau nom de l'etudiant : ");
@@ -175,7 +175,7 @@ static PersonnelService personnelService;
 		case 3:
 			// lister infos etudiants 
 			System.out.println();
-			System.out.print("entrer le nom de l'etudiant � afficher: ");
+			System.out.print("entrer le nom de l'etudiant e afficher: ");
 			String nom = scan.next();
 			System.out.println();
 			Etudiant etu = etudiantService.lireEtudiant(nom);
@@ -183,25 +183,25 @@ static PersonnelService personnelService;
 				System.out.println(etu.toString());
 			}
 			else {
-				System.out.println("l'étudiant n'existe pas ");
+				System.out.println("l'etudiant n'existe pas ");
 			}
 			
 			continuerOperation();
 			break;
 		case 4:
-			// lister les �tudiants
+			// lister les etudiants
 			if(userConnect.getFonction().matches("directeur")) {
 				System.out.println();
-				System.out.println("La liste des �tudiants");
+				System.out.println("La liste des etudiants");
 				ArrayList<Etudiant> list = etudiantService.lireEtudiants();
 				for (Etudiant etudiant : list) {
-					System.out.println("infos Etudiant : " + etudiant.getNom());
+					//System.out.println("infos Etudiant : " + etudiant.getNom());
 					System.out.println();
 					System.out.println(etudiant.toString());
 				}
 			}
 			else {
-				System.out.println("vous n'etes pas autorisé à accéder à cette fonctionnalité ");
+				System.out.println("vous n'etes pas autorise à acceder à cette fonctionnalite ");
 			}
 		
 			continuerOperation();
@@ -209,9 +209,9 @@ static PersonnelService personnelService;
 		
 
 		case 5:
-			// supprimer un �tudiant
+			// supprimer un etudiant
 			System.out.println();
-			System.out.print("entrer le nom de l'�tudiant � supprimer: ");
+			System.out.print("entrer le nom de l'etudiant e supprimer: ");
 			String nomEtudiantSupprimer = scan.next();
 			 result = etudiantService.deleteEtudiant(nomEtudiantSupprimer);
 			System.out.println(result);
@@ -220,10 +220,10 @@ static PersonnelService personnelService;
 		case 6:
 			// associerEtudiantCours
 			System.out.println();
-			System.out.print("entrer le nom de l'étudiant: ");
+			System.out.print("entrer le nom de l'etudiant: ");
 			String nomEtudiant = scan.next();
 			System.out.println();
-			System.out.print("entrer le théme du cours: ");
+			System.out.print("entrer le theme du cours: ");
 			String theme = scan.next();
 			associerEtudiantCours(nomEtudiant,theme);
 			//Dao.deleteEtudiant(nomEtudiant);
@@ -238,7 +238,7 @@ static PersonnelService personnelService;
 
 
 		default:
-			// si aucune op�ration ne correspond
+			// si aucune opbration ne correspond
 			System.out.println();
 			System.out.println("Vous avez saisi un mauvais chiffre. Veuillez reprendre Merci.");
 			methodeARepetition();
@@ -247,19 +247,19 @@ static PersonnelService personnelService;
 
 	}
 	
-	// fonction permettant d'associer un étudaint à un cours 
+	// fonction permettant d'associer un etudaint à un cours 
 private static void associerEtudiantCours(String nomEtudiant, String theme) {
 	try {
-		// 1 récupérer l'étudiant 
+		// 1 recuperer l'etudiant 
 		Etudiant etudiant = etudiantService.lireEtudiant(nomEtudiant);
 		
-		// 2 récupérer le cours 
+		// 2 recuperer le cours 
 		Cours cours = Dao.lireCours(theme);
 		
 		if (etudiant != null && cours !=null) {
 			 // 3 associer le cours et l'etudiant 
 			etudiantService.associerCoursEtudiant(etudiant.getIdentifiant(), cours.getId());
-			System.out.println("L'étudiant " + etudiant.getNom() + " participe maintenant au cours " + cours.getTheme());
+			System.out.println("L'etudiant " + etudiant.getNom() + " participe maintenant au cours " + cours.getTheme());
 		}
 		
 	} catch (Exception e) {

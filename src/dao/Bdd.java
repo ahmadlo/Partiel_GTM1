@@ -26,7 +26,7 @@ private Connection cn =null;
 			 this.cn= DriverManager.getConnection(con,login,passwd);
 			}
 			 catch (SQLException e) {
-		e.printStackTrace();	 
+		//e.printStackTrace();	 
 			 
 		 }
 		 

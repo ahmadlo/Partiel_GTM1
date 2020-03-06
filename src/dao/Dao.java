@@ -38,7 +38,7 @@ public  class Dao {
 
 						cn = DriverManager.getConnection(url, login, password);
 					}
-					System.out.println("connexion reussie " + cn.toString());
+					//System.out.println("connexion reussie " + cn.toString());
 
 					
 				
