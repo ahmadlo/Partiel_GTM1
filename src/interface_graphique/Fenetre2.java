@@ -5,15 +5,23 @@ import java.awt.Color;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import metier.Etudiant;
+
 import javax.swing.BoxLayout;
 
 public class Fenetre2 extends JFrame implements ActionListener  {
-        private JButton btnAff = new JButton("Liste Etudiant");
+      
+	private static final long serialVersionUID1 = 1L;
+	
+	private static final long serialVersionUID = -4721124658632373556L;
+		private JButton btnAff = new JButton("Liste Etudiant");
         private TextField fieldAff = new TextField("",100); 
         private JPanel panel = new JPanel();
         private BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
@@ -36,6 +44,11 @@ public class Fenetre2 extends JFrame implements ActionListener  {
         
         @Override
         public void actionPerformed(ActionEvent e) { 
-        	fieldAff.setText("La liste des étudiants : \n"+ new EtudiantService().lireEtudiants().toString());
+        	ArrayList <Etudiant> le = new EtudiantService().lireEtudiants();
+        	String resultat = "La liste des étudiants : /n";
+        	for (Etudiant etudiant : le) {
+				resultat = resultat + etudiant.getNom() + " " + etudiant.getPrenom()+ "/n";
+			}
+        	fieldAff.setText(resultat);
         }
 }
