@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import metier.Cours;
 import metier.Ecole;
 import metier.Etudiant;
 import metier.Personnel;
@@ -543,4 +544,135 @@ public  class Dao {
 	}
 	
 	
+	// associer etudiant et cours 
+	
+	public static void associerCoursEtudiant(String matEtud, int idcours) {
+
+		// information de la base de donnee
+
+		String url = "jdbc:mysql://localhost/etudiantecole";
+		String login = "root";
+
+		
+
+		try {
+			// etape1 chargement du driver
+
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// etape2 recupertion de la connnexion
+
+			cn = DriverManager.getConnection(url, login, password);
+
+			// etape 3 creation du statement
+			st = cn.createStatement();
+			String sql = "INSERT INTO `etudiant_cours` (`idetudiant`,`idcours`) VALUES ('" + matEtud + "','"
+					+ idcours + "')";
+//
+//			// etape 4 executer la requette
+//			st.executeUpdate(sql);
+			System.out.println("Enr�gistrement effectu� avec succ�s !!!! ");
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} finally {
+
+			// etape 5 liberer les ressources
+			try {
+				cn.close();
+				st.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+
+	//lire les infos d'un cours 
+	public static Cours  lireCours(String nom) {
+				
+				Cours cours = null;
+				// connexion  à la base de données 
+				try {
+					connexion();
+					if(cn!=null) {
+						
+						// etape 3 creation du statement
+						st = cn.createStatement();
+						String sql = "select * from cours where  theme = '" + nom + "'";
+						
+						// etape 4 executer la requette
+						
+						rs = st.executeQuery(sql);
+
+						// etape5 parcours du resultSet
+						
+						while (rs.next()) {
+							cours = new Cours();
+							
+							cours.setId(rs.getInt("id"));
+							cours.setTheme(rs.getString("theme"));
+							cours.setNb_heures(rs.getInt("nb_heures"));
+														
+							
+						}
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				
+				// retourner le cours connecté 
+				return cours;
+
+			}
+
+			
+			//liste des cours 
+	public static ArrayList<Cours>  listeCours() {
+		ArrayList<Cours> list = null;
+		Cours cours = null;
+		// connexion  à la base de données 
+		try {
+			connexion();
+			if(cn!=null) {
+				
+				// etape 3 creation du statement
+				st = cn.createStatement();
+				String sql = "select * from cours ";
+				
+				// etape 4 executer la requette
+				
+				rs = st.executeQuery(sql);
+
+				// etape5 parcours du resultSet
+				list = new ArrayList<Cours>();
+				while (rs.next()) {
+					cours = new Cours();
+					
+					cours.setId(rs.getInt("id"));
+					cours.setTheme(rs.getString("theme"));
+					cours.setNb_heures(rs.getInt("nb_heures"));
+												
+					list.add(cours);
+					
+					
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		// retourner la liste des cours 
+		return list;
+
+	}
+
 }

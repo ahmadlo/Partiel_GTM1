@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import javax.management.openmbean.OpenMBeanOperationInfo;
 
+import metier.Cours;
 import metier.Ecole;
 import metier.Etudiant;
 import metier.Personnel;
@@ -195,6 +196,18 @@ static Personnel userConnect = null;
 			Dao.deleteEtudiant(nomEtudiantSupprimer);
 			continuerOperation();
 			break;
+		case 6:
+			// supprimer un �tudiant
+			System.out.println();
+			System.out.print("entrer le nom de l'étudiant: ");
+			String nomEtudiant = scan.next();
+			System.out.println();
+			System.out.print("entrer le théme du cours: ");
+			String theme = scan.next();
+			associerEtudiantCours(nomEtudiant,theme);
+			//Dao.deleteEtudiant(nomEtudiant);
+			continuerOperation();
+			break;
 
 		
 
@@ -207,6 +220,30 @@ static Personnel userConnect = null;
 		}
 
 	}
+	
+	// fonction permettant d'associer un étudaint à un cours 
+private static void associerEtudiantCours(String nomEtudiant, String theme) {
+	try {
+		// 1 récupérer l'étudiant 
+		Etudiant etudiant = Dao.lireEtudiant(nomEtudiant);
+		
+		// 2 récupérer le cours 
+		Cours cours = Dao.lireCours(theme);
+		
+		if (etudiant != null && cours !=null) {
+			 // 3 associer le cours et l'etudiant 
+			Dao.associerCoursEtudiant(etudiant.getIdentifiant(), cours.getId());
+			System.out.println("L'étudiant " + etudiant.getNom() + " participe maintenant au cours " + cours.getTheme());
+		}
+		
+	} catch (Exception e) {
+		System.out.println("erreur associerCoursEtudiant : " );
+		e.printStackTrace();
+	}
+		
+		
+	}
+
 //focntion de saisie des infos de l'etudaint 
 	private static void CreerEtudiant() {
 		Etudiant etudiant = new Etudiant();
