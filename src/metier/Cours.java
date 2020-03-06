@@ -4,7 +4,7 @@
 package metier;
 
 /**
- * @author SDWW1761
+ * @author braham
  * Classe de base des cours 
  */
 public class Cours  {

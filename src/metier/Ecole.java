@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author SDWW1761
+ * @author braham
  * Classe de base de l'Ecole
  */
 public class Ecole {

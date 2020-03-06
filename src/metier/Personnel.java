@@ -4,7 +4,7 @@
 package metier;
 
 /**
- * @author SDWW1761
+ * @author braham
  *
  */
 public class Personnel  extends Personne{

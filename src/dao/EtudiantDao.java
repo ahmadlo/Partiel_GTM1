@@ -11,7 +11,7 @@ import metier.Cours;
 import metier.Etudiant;
 
 /**
- * @author SDWW1761
+ * @author braham
  * Classe de gestion des appels de la BDD pour l'Etudiant 
  */
 public class EtudiantDao {

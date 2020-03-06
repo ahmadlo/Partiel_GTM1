@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * @author SDWW1761
+ * @author Braham
  * Classe de gestion de la connexion  avec la base de donnée (
  */
 public class Bdd {

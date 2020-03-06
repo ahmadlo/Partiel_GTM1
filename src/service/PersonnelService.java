@@ -2,7 +2,7 @@ package service;
 
 /**
  * Service de gestion du Personnel
- * @author SDWW1761
+ * @author braham
  *
  */
 public class PersonnelService implements IPersonnel{

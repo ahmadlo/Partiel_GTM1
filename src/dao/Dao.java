@@ -14,21 +14,10 @@ import metier.Etudiant;
 import metier.Personnel;
 
 /**
- * @author SDWW1761
+ * @author braham
  *
  */
-/**
- * @author SDWW1761
- *
- */
-/**
- * @author SDWW1761
- *
- */
-/**
- * @author SDWW1761
- *
- */
+
 public  class Dao {
 
 	public static String password = "";

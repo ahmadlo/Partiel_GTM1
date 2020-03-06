@@ -6,7 +6,7 @@ import dao.EtudiantDao;
 import metier.Etudiant;
 
 /**
- * @author SDWW1761
+ * @author braham
  * Service de gestion des etudiants 
  */
 public class EtudiantService implements IEtudiant {

@@ -6,7 +6,7 @@ import java.sql.Statement;
 import metier.Personnel;
 
 /**
- * @author SDWW1761
+ * @author braham
  * Classe de gestion des appels de la BDD pour le Personnel
  */
 public class PersonnelDao {
