@@ -2,7 +2,7 @@ package metier;
 
 import java.sql.Date;
 
-/*
+/**
  * classe de base des etudiants qui hérite de PErsonne 
  */
 public class Etudiant extends Personne  {
@@ -33,6 +33,9 @@ public class Etudiant extends Personne  {
 		this.date_naiss = date_naiss;
 	}
 
+	/**
+	 * Permet d'afficher l'état de l'objet 
+	 */
 	@Override
 	public String toString() {
 		return getNom() + " - " + getPrenom() + " - "   + getAdresse() + " - "  + getDate_naiss()  ;

@@ -5,6 +5,10 @@ import java.sql.Statement;
 
 import metier.Personnel;
 
+/**
+ * @author SDWW1761
+ * Classe de gestion des appels de la BDD pour le Personnel
+ */
 public class PersonnelDao {
 
 	private static Statement st = null;
@@ -12,6 +16,12 @@ public class PersonnelDao {
 	private static String sql = "";
 	private static Bdd B = new Bdd();
 	//methode de conenxion du personnel 
+			/**
+			 * methode de connexion des personnels 
+			 * @param login
+			 * @param password
+			 * @return 
+			 */
 			public static Personnel connexionAppli(String login,String password) {
 				
 				Personnel user = null;

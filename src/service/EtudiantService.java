@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import dao.EtudiantDao;
 import metier.Etudiant;
 
+/**
+ * @author SDWW1761
+ * Service de gestion des etudiants 
+ */
 public class EtudiantService implements IEtudiant {
 	
 	EtudiantDao ed = new EtudiantDao();
@@ -48,6 +52,9 @@ public class EtudiantService implements IEtudiant {
 		return "Etudiant non supprimé";
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public void associerCoursEtudiant(String matEtud, int idcours) {
 		ed.associerCoursEtudiant(matEtud, idcours);

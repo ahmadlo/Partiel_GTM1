@@ -5,7 +5,7 @@ package metier;
 
 /**
  * @author SDWW1761
- *
+ * Classe de base des cours 
  */
 public class Cours  {
 

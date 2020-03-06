@@ -1,5 +1,5 @@
 package metier;
-/*
+/**
  * Classe de base qui sera héritée par les autres classes 
  */
 public class Personne {

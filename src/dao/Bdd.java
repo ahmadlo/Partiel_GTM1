@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * @author SDWW1761
+ * Classe de gestion de la connexion  avec la base de donnée (
+ */
 public class Bdd {
 	
 private String url = "jdbc:mysql://localhost" ;

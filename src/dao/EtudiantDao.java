@@ -10,6 +10,10 @@ import java.util.UUID;
 import metier.Cours;
 import metier.Etudiant;
 
+/**
+ * @author SDWW1761
+ * Classe de gestion des appels de la BDD pour l'Etudiant 
+ */
 public class EtudiantDao {
 	private static Statement st = null;
 	private static ResultSet rs = null;

@@ -1,5 +1,5 @@
 /**
- * 
+ * Classe de gestion du Personnel de l'école
  */
 package metier;
 

@@ -3,6 +3,10 @@ package metier;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author SDWW1761
+ * Classe de base de l'Ecole
+ */
 public class Ecole {
 
 	
