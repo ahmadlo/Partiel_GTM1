@@ -1,4 +1,4 @@
-#Logiciel de gestion d'établissement scolaire
+# Logiciel de gestion d'établissement scolaire
 
 Groupe:
 - Lyes Koriche
@@ -6,7 +6,7 @@ Groupe:
 - Ahmadou Lo
 - Braham Moussoni
 
-#Etape d'instalaltion du projet 
+# Etape d'instalaltion du projet 
 
 **Prérequis :**
 - Avoir **Git** et **Eclipse** installés en local
