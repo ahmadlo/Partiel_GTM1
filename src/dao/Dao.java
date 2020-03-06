@@ -1,4 +1,4 @@
-package service;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -476,17 +476,15 @@ public  class Dao {
 		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
-		} finally {
-
-			// etape 5 liberer les ressources
-			try {
-				cn.close();
-				st.close();
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-		}
+		} /*
+			 * finally {
+			 * 
+			 * // etape 5 liberer les ressources try { cn.close(); st.close(); } catch
+			 * (SQLException e) {
+			 * 
+			 * e.printStackTrace(); }
+			
+		 } */
 	}
 
 	public static void deleteEcole(String nom) {
@@ -530,17 +528,14 @@ public  class Dao {
 		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
-		} finally {
-
-			// etape 5 liberer les ressources
-			try {
-				cn.close();
-				st.close();
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-		}
+		} /*
+			 * finally {
+			 * 
+			 * // etape 5 liberer les ressources try { cn.close(); st.close(); } catch
+			 * (SQLException e) {
+			 * 
+			 * e.printStackTrace(); } }
+			 */
 	}
 	
 	
@@ -579,18 +574,15 @@ public  class Dao {
 		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
-		} finally {
-
-			// etape 5 liberer les ressources
-			try {
-				cn.close();
-				st.close();
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-		}
-	}
+		}} /*
+		 * finally {
+		 * 
+		 * // etape 5 liberer les ressources try { //st.close(); //cn.close();
+		 * 
+		 * } catch (SQLException e) {
+		 * 
+		 * e.printStackTrace(); } } }
+		 */
 
 	//lire les infos d'un cours 
 	public static Cours  lireCours(String nom) {

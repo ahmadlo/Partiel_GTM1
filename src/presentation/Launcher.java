@@ -6,14 +6,16 @@ import java.util.Scanner;
 
 import javax.management.openmbean.OpenMBeanOperationInfo;
 
+import dao.Dao;
 import metier.Cours;
 import metier.Ecole;
 import metier.Etudiant;
 import metier.Personnel;
-import service.Dao;
+import service.EtudiantService;
 
-public class luncher {
+public class Launcher {
 static Personnel userConnect = null;
+static EtudiantService etudiantService;
 
 // fonction qui affiche le menu 
 	private static void afficher() {
@@ -71,6 +73,7 @@ static Personnel userConnect = null;
 
 	// m�thode main
 	public static void main(String[] args) {
+		etudiantService = new EtudiantService();
 		// mot de passe mysql
 		saisirMotDePasse();
 		// connexion à l'application  
@@ -154,7 +157,9 @@ static Personnel userConnect = null;
 			System.out.println();
 			System.out.print("entrer le nouveau nom de l'etudiant : ");
 			String nouveauNom = scan.next();
-			Dao.updateEtudiant(ancienNom, nouveauNom);
+			String result = etudiantService.updateEtudiant(ancienNom, nouveauNom);
+			System.out.println(result);
+			
 			continuerOperation();
 			break;
 
@@ -164,8 +169,14 @@ static Personnel userConnect = null;
 			System.out.print("entrer le nom de l'etudiant � afficher: ");
 			String nom = scan.next();
 			System.out.println();
-			Etudiant etu = Dao.lireEtudiant(nom);
-			System.out.println(etu.toString());
+			Etudiant etu = etudiantService.lireEtudiant(nom);
+			if (etu!= null) {
+				System.out.println(etu.toString());
+			}
+			else {
+				System.out.println("l'étudiant n'existe pas ");
+			}
+			
 			continuerOperation();
 			break;
 		case 4:
@@ -173,7 +184,7 @@ static Personnel userConnect = null;
 			if(userConnect.getFonction().matches("directeur")) {
 				System.out.println();
 				System.out.println("La liste des �tudiants");
-				ArrayList<Etudiant> list = Dao.lireEtudiants();
+				ArrayList<Etudiant> list = etudiantService.lireEtudiants();
 				for (Etudiant etudiant : list) {
 					System.out.println("infos Etudiant : " + etudiant.getNom());
 					System.out.println();
@@ -193,11 +204,12 @@ static Personnel userConnect = null;
 			System.out.println();
 			System.out.print("entrer le nom de l'�tudiant � supprimer: ");
 			String nomEtudiantSupprimer = scan.next();
-			Dao.deleteEtudiant(nomEtudiantSupprimer);
+			 result = etudiantService.deleteEtudiant(nomEtudiantSupprimer);
+			System.out.println(result);
 			continuerOperation();
 			break;
 		case 6:
-			// supprimer un �tudiant
+			// associerEtudiantCours
 			System.out.println();
 			System.out.print("entrer le nom de l'étudiant: ");
 			String nomEtudiant = scan.next();
@@ -225,14 +237,14 @@ static Personnel userConnect = null;
 private static void associerEtudiantCours(String nomEtudiant, String theme) {
 	try {
 		// 1 récupérer l'étudiant 
-		Etudiant etudiant = Dao.lireEtudiant(nomEtudiant);
+		Etudiant etudiant = etudiantService.lireEtudiant(nomEtudiant);
 		
 		// 2 récupérer le cours 
 		Cours cours = Dao.lireCours(theme);
 		
 		if (etudiant != null && cours !=null) {
 			 // 3 associer le cours et l'etudiant 
-			Dao.associerCoursEtudiant(etudiant.getIdentifiant(), cours.getId());
+			etudiantService.associerCoursEtudiant(etudiant.getIdentifiant(), cours.getId());
 			System.out.println("L'étudiant " + etudiant.getNom() + " participe maintenant au cours " + cours.getTheme());
 		}
 		
@@ -273,7 +285,9 @@ private static void associerEtudiantCours(String nomEtudiant, String theme) {
 		System.out.print("entrer la date de naissance  de l'etudiant : ");
 		etudiant.setDate_naiss( Date.valueOf(scan.next()));
 		System.out.println();
-		Dao.creerEtudiant(etudiant);
+		String result = etudiantService.creerEtudiant(etudiant);
+		System.out.println(result);
+		//Dao.creerEtudiant(etudiant);
 		
 		
 	}
