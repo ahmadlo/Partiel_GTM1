@@ -6,8 +6,12 @@ import java.util.Scanner;
 
 import javax.management.openmbean.OpenMBeanOperationInfo;
 
+
 import dao.Dao;
 import metier.Cours;
+
+import interface_graphique.Fenetre;
+
 import metier.Ecole;
 import metier.Etudiant;
 import metier.Personnel;
@@ -29,6 +33,8 @@ static EtudiantService etudiantService;
 		System.out.println("Pour lister les �tudiants tapez 4");
 		System.out.println("Pour supprimer un �tudiant tapez 5");
 		System.out.println("Pour Associer un cours à un étudiant tapez 6");
+		System.out.println("Pour une affichage graphique  tapez 6");
+		
 		
 		
 		
@@ -220,8 +226,13 @@ static EtudiantService etudiantService;
 			//Dao.deleteEtudiant(nomEtudiant);
 			continuerOperation();
 			break;
+			
 
-		
+		case 7: 
+			
+			Fenetre fen = new Fenetre();
+			break;
+
 
 		default:
 			// si aucune op�ration ne correspond
