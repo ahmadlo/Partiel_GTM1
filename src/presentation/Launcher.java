@@ -16,10 +16,12 @@ import metier.Ecole;
 import metier.Etudiant;
 import metier.Personnel;
 import service.EtudiantService;
+import service.PersonnelService;
 
 public class Launcher {
 static Personnel userConnect = null;
 static EtudiantService etudiantService;
+static PersonnelService personnelService;
 
 // fonction qui affiche le menu 
 	private static void afficher() {
@@ -33,7 +35,7 @@ static EtudiantService etudiantService;
 		System.out.println("Pour lister les �tudiants tapez 4");
 		System.out.println("Pour supprimer un �tudiant tapez 5");
 		System.out.println("Pour Associer un cours à un étudiant tapez 6");
-		System.out.println("Pour une affichage graphique  tapez 6");
+		System.out.println("Pour une affichage graphique  tapez 7");
 		
 		
 		
@@ -80,8 +82,9 @@ static EtudiantService etudiantService;
 	// m�thode main
 	public static void main(String[] args) {
 		etudiantService = new EtudiantService();
+		personnelService=new PersonnelService();
 		// mot de passe mysql
-		saisirMotDePasse();
+		//saisirMotDePasse();
 		// connexion à l'application  
 		testerConnexion();
 		if(userConnect != null) {
@@ -108,7 +111,7 @@ static EtudiantService etudiantService;
 		String password   = sc.next();
 		
 		
-		userConnect= Dao.connexionAppli(login,password );
+		userConnect= personnelService.authentification(login,password );
 		System.out.println("bienvenue  : " + userConnect.getNom());
 		
 	}
