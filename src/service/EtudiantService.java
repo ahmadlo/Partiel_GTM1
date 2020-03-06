@@ -13,9 +13,9 @@ public class EtudiantService implements IEtudiant {
 	public String creerEtudiant(Etudiant etudiant) {
 		
 		if (ed.createEtudiant(etudiant) != 0) {
-			return "Etudiant insere";
+			return "Etudiant inseré avec succés";
 		}
-		return "Etudiant non inser�";
+		return "Etudiant non inseré";
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class EtudiantService implements IEtudiant {
 	@Override
 	public String updateEtudiant(String ancienNom, String nouveauNom) {
 		if (ed.updateEtudiant(ancienNom, nouveauNom) != 0) {
-			return "Etudiant modifié";
+			return "Etudiant modifié avec succés";
 		}
 		return "Etudiant non modifié";
 	}
@@ -43,9 +43,9 @@ public class EtudiantService implements IEtudiant {
 	@Override
 	public String deleteEtudiant(String nom) {
 		if (ed.deleteEtudiant( nom) != 0) {
-			return "Etudiant modifié";
+			return "Etudiant supprimé avec succés";
 		}
-		return "Etudiant non modifié";
+		return "Etudiant non supprimé";
 	}
 
 	@Override

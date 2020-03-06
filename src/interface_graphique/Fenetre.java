@@ -15,12 +15,12 @@ public class Fenetre extends JFrame implements ActionListener {
    public Fenetre () {
       setLayout(new FlowLayout());
       
-      user = new TextField("Entrez votre Username", 20); // construct the TextField component with initial text
+      user = new TextField("bevalet", 20); // construct the TextField component with initial text
       user.setBackground(Color.WHITE);
       user.setEditable(true);      	 // set to read-only
       add(user);                     // "super" Frame container adds TextField component
       
-      pssw = new TextField("Entrez votre Mdp", 20); // construct the TextField component with initial text
+      pssw = new TextField("bevalet", 20); // construct the TextField component with initial text
       pssw.setBackground(Color.WHITE);
       pssw.setEditable(true);      	 // set to read-only
       add(pssw);                     // "super" Frame container adds TextField component
