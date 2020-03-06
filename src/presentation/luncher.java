@@ -187,7 +187,7 @@ static Personnel userConnect = null;
 			break;
 		
 
-		case 6:
+		case 5:
 			// supprimer un �tudiant
 			System.out.println();
 			System.out.print("entrer le nom de l'�tudiant � supprimer: ");
