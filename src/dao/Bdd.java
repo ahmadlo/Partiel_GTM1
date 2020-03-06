@@ -8,11 +8,11 @@ public class Bdd {
 	
 private String url = "jdbc:mysql://localhost" ;
 
-public static String login ="root";
-public static String passwd="Passer@18";
-public static String port = "3306";
+public static String login ="braham";
+public static String passwd="";
+public static String port = "8889";
 
-private String bd="partiel_gtm";
+private String bd="partiel";
 private Connection cn =null;
 
 /**

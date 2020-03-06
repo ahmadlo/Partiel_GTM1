@@ -42,7 +42,8 @@ public class Fenetre extends JFrame implements ActionListener {
 @Override
 public void actionPerformed(ActionEvent e) { 
 	this.dispose();
-    fen = new Fenetre2();
-    
+    if(true) {
+    	fen = new Fenetre2();
+    }
 }
 }
