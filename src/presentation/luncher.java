@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import javax.management.openmbean.OpenMBeanOperationInfo;
 
+import interface_graphique.Fenetre;
 import metier.Ecole;
 import metier.Etudiant;
 import metier.Personnel;
@@ -195,8 +196,13 @@ static Personnel userConnect = null;
 			Dao.deleteEtudiant(nomEtudiantSupprimer);
 			continuerOperation();
 			break;
+			
 
-		
+		case 7: 
+			
+			Fenetre fen = new Fenetre();
+			break;
+
 
 		default:
 			// si aucune op�ration ne correspond

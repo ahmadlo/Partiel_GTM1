@@ -13,9 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 
 public class Fenetre2 extends JFrame implements ActionListener  {
-		
-      //  private JPanel pan = new JPanel();
-     //   private JLabel label = new JLabel();
         private JButton btnAff = new JButton("Liste Etudiant");
         private TextField fieldAff = new TextField("",100); 
         private JPanel panel = new JPanel();
